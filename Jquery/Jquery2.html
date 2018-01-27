@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>Jquery Session 1</title>
+        <style>
+          .cls-img-container{
+              display: inline-block;
+              width:250px;
+              height: 250px;
+              border: 1px solid blue;
+          }
+          .cls-img-container > img{
+            max-width: 250px;
+            height: 250px;
+          }
+
+          .hide-img{
+              display: none;
+          }
+
+        </style>
+    </head>
+    <body>
+
+        <div  >
+            <input type="button" id="btn-img" value="Hide Image" />
+        </div>
+        <div class="cls-img-container" id="img-container" >
+            <img src="img.jpg"  />
+        </div>
+
+        <script src="lib/jquery.js" ></script>
+        <script>
+            
+            (function(){
+               $(document).ready(function(){
+                    $("#btn-img").on("click", function(){
+                      
+                        /**
+                         COmplex approach
+                         *
+                        if($("#img-container").hasClass("hide-img")){
+                            $("#img-container").removeClass("hide-img")
+                            $(this).val("Hide Image");
+                        }else{
+                            $("#img-container").addClass("hide-img")
+                            $(this).val("Show Image");
+                        }
+
+                        */
+                        
+                        $("#img-container").toggleClass("hide-img")
+                        $(this).val($(this).val()=="Hide Image" ? "Show Image" : "Hide Image");
+
+                    });
+               })
+            })();
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <title>Jquery Session 1</title>
+        <style>
+            #weather{
+                border:1px solid red;
+                display: inline-block;
+                width:300px;
+                color:blue;
+                background:#cacaca;
+                padding:2px;
+
+            }
+        </style>
+    </head>
+    <body  onload="windowReady()" >
+        <h4>Advantages of Jquery</h4>
+        <ul>
+            <li>Its light weight</li>
+            <li>Cross browset support</li>
+            <li>Provides DOM Selectors with which we can perform dom manipulation </li>
+            <li>Event handlers</li>
+            <li>Useful functions like addClass , removeClass , trim comes handy with jquery</li>
+        </ul>
+        <img src="img.jpg"  id="imgEle" style="display:none"  ></img>
+        <div id="weather" >
+
+        </div>
+        <script src="lib/jquery.js" ></script>
+        <script>
+            function windowReady(){
+               // alert("Window ready Javascript");
+            }
+            function windowReady2(){
+               // alert("Window ready jquery");
+            }
+
+            (function(){
+               $(document).ready(function(){
+                    windowReady2();
+
+                    $("#imgEle").hide();
+                    //Demonstrting AJAX Call
+                    $.ajax({method:"get", 
+                        url:"data.json",
+                        success:function(response){
+                            $("#weather").html("Wind speed : "+ response.wind.speed)
+                        }
+                    });
+
+               })
+            })();
+
+        </script>
+    </body>
+</html>
