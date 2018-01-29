@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Jquery Session 1</title>
+        <style>
+         </style>
+    </head>
+    <body  >
+        <div>
+            <ul  id="list" >
+                <li  class="cls_data" >Data 1</li>
+                <li  class="cls_data" >Data 2</li>
+            </ul>
+            <input type="button"  value="Add data" id="btn_add"  /> 
+            <input type="text" value="" id="txt_data" /> 
+            <div class="cls_data" >Test</div>
+            <input type="button"  value="Trim" id="btn_trim"  /> 
+        </div>
+        <script src="lib/jquery.js" ></script>
+        <script>
+            (function(){
+               $(document).ready(function(){
+                   $(document).on("click","#list > li",function(evt){
+                      $("#txt_data").val($(this).html())
+                   });
+
+                   $("#btn_trim").on("click",function(){
+                        $("#txt_data").val($.trim($("#txt_data").val()));
+                   });
+
+                   $("#btn_add").on("click",function(){
+                       var data = $("#txt_data").val();
+                       $("<li class='cls_data' >"+data+"</li>").html(data).appendTo("#list");
+                   })
+               });
+               
+            })();
+
+        </script>
+    </body>
+</html>

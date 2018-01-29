@@ -1,0 +1,23 @@
+<div class="container" >
+    <table class="table table-bordered table-striped"  *ngIf="myTasks.length !=0" >
+        <thead>
+            <tr>
+                <th class="text-center" >Sl. No.</th>
+                <th class="text-center" >Task Name</th>
+                <th class="text-center" >Task State</th>
+                <th class="text-center" >Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let todo of myTasks let i=index" [ngClass]="{'success': todo.taskState=='Completed', 'danger': todo.taskState=='Pending'}"  >
+                <td>{{i+1}}</td>
+                <td>{{todo.taskName}}</td>
+                <td>{{todo.taskState}}</td>
+                <td class="text-center" >
+                    <input type="button"  class="btn btn-primary" value="Complete"  (click)="completeTask(todo)"  *ngIf="todo.taskState=='Pending'"  />
+                    <input type="button"  class="btn btn-danger" value="Delete"  (click)="deleteTask(i)"  *ngIf="todo.taskState=='Completed'"  />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
